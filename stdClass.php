@@ -16,6 +16,14 @@ namespace
 			return sizeof($args) ? $args : $this;
 		}
 	}
+
+    class bar
+    {
+        protected static function foo()
+        {
+            return __METHOD__;
+        }
+    }
 }
 
 namespace tests\units
@@ -29,8 +37,10 @@ namespace tests\units
 			$this
 				->if($sut = new \foo())
 				->then
-					->object($this->invoke($sut, 'bar'))->isIdenticalTo($sut)
-					->array($this->invoke($sut, 'bar', $a = uniqid(), $b = uniqid()))->isIdenticalTo(array($a, $b))
+					->object($this->invoke($sut)->bar())->isIdenticalTo($sut)
+					->array($this->invoke($sut)->bar($a = uniqid(), $b = uniqid()))->isIdenticalTo(array($a, $b))
+
+                    ->string($this->invoke('bar')->foo())->isEqualTo('bar::foo')
 
 				->given(
 					$this->mockGenerator

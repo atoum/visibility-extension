@@ -5,62 +5,74 @@ namespace mageekguy\atoum\visibility;
 use mageekguy\atoum;
 use mageekguy\atoum\visibility\invoker;
 
-class invoker
+abstract class invoker
 {
-	protected $object;
-	protected $reflectionFactory;
+	protected $target;
+    protected $reflectedTarget;
+	protected $reflectionClassFactory;
 
-	public function __construct($reflectionFactory = null)
+	public function __construct($reflectionClassFactory = null)
 	{
-		$this->reflectionFactory = $reflectionFactory ?: function($classname) {
-			return new \reflectionClass($classname);
-		};
+		$this->setReflectionClassFactory($reflectionClassFactory);
 	}
 
-	public function setObject($object)
+    public function __call($method, $arguments)
+    {
+        return $this->invoke($method, $arguments);
+    }
+
+    public function setReflectionClassFactory($reflectionClassFactory = null)
+    {
+        if ($reflectionClassFactory !== null && is_callable($reflectionClassFactory) === false)
+        {
+            throw new atoum\exceptions\logic\invalidArgument(sprintf('Argument of %s::%s() must be callable', get_class($this), __FUNCTION__));
+        }
+
+        $this->reflectionClassFactory = $reflectionClassFactory ?: function($classname) {
+            return new \reflectionClass($classname);
+        };;
+
+        return $this;
+    }
+
+    public function getReflectionClassFactory()
+    {
+        return $this->reflectionClassFactory;
+    }
+
+	public function setTarget($target)
+    {
+        try
+        {
+            $this->target = $target;
+            $this->reflectedTarget = call_user_func($this->reflectionClassFactory, $this->target);
+        }
+        catch (\reflectionException $exception)
+        {
+            throw new invoker\exception(
+                sprintf('%s is not a valid invoker target', $target),
+                $exception->getCode(),
+                $exception
+            );
+        }
+
+        return $this;
+    }
+
+	abstract public function getInvokable($method);
+
+    public function invoke($method, array $arguments = array())
+    {
+        array_unshift($arguments, $this->targetIsSet()->target);
+
+        return call_user_func_array(array($this->getInvokable($method), 'invoke'), $arguments);
+    }
+
+	protected function targetIsSet()
 	{
-		if (is_object($object) === false)
+		if ($this->target === null)
 		{
-			throw new atoum\exceptions\logic\invalidArgument(sprintf('%s is not an object', $object));
-		}
-
-		$this->object = $object;
-
-		return $this;
-	}
-
-	public function getInvokable($method)
-	{
-		$reflection = call_user_func($this->reflectionFactory, $this->objectIsSet()->object);
-
-		if ($reflection->hasMethod($method) === false)
-		{
-			throw new atoum\exceptions\logic\invalidArgument(sprintf('Method %s::%s does not exist', $reflection->getName(), $method));
-		}
-
-		$method = $reflection->getMethod($method);
-		$method->setAccessible(true);
-
-		return $method;
-	}
-
-	public function invoke($method)
-	{
-		$arguments = array_slice(func_get_args(), 1);
-
-		if (sizeof($arguments) === 0)
-		{
-			return $this->getInvokable($method)->invoke($this->object);
-		}
-
-		return $this->getInvokable($method)->invokeArgs($this->object, $arguments);
-	}
-
-	protected function objectIsSet()
-	{
-		if ($this->object === null)
-		{
-			throw new invoker\exception('Object is not set');
+			throw new invoker\exception('Invoker\'s target is not set');
 		}
 
 		return $this;

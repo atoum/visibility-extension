@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jubianchi
- * Date: 01/04/2014
- * Time: 00:39
- */
 
 namespace mageekguy\atoum\visibility\mock;
 

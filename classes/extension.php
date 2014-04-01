@@ -33,24 +33,20 @@ class extension implements atoum\extension
 
 	public function setTest(test $test)
 	{
-		$invoker = null;
-		$invokerFactory = function() use (& $invoker) {
-			if ($invoker === null)
-			{
-				$invoker = new atoum\visibility\invoker();
-			}
-
-			return $invoker;
-		};
-
 		$test->getAssertionManager()
 			->setHandler(
 				'invoke',
-				function($object, $method) use ($test, $invokerFactory) {
-					return call_user_func_array(
-						array($invokerFactory()->setObject($object), 'invoke'),
-						array($method) + array_slice(func_get_args(), 1)
-					);
+				function($target) use ($test) {
+					if (is_string($target))
+                    {
+                        $invoker = new atoum\visibility\invokers\klass();
+                    }
+                    else
+                    {
+                        $invoker = new atoum\visibility\invokers\instance();
+                    }
+
+                    return $invoker->setTarget($target);
 				}
 			)
 		;
