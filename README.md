@@ -169,6 +169,8 @@ When you want to temporarily override the visibility of a mock instance, you can
 arguments. Using the previous example, it would look like:
 
 ```php
+<?php
+
 namespace tests\units
 {
 	use mageekguy\atoum;
