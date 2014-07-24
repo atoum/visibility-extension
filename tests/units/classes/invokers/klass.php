@@ -119,6 +119,7 @@ class klass extends atoum\test
 			->given(
 				$this->mockGenerator
 					->orphanize('__construct')
+					->orphanize('invoke')
 					->generate('reflectionMethod'),
 				$factory = function($object) use (& $reflectionClass, & $reflectionMethod, & $method, & $return) {
 					$reflectionClass = new \mock\reflectionClass($object);
