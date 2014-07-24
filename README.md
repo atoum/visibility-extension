@@ -91,7 +91,7 @@ namespace tests\units
 }
 ```
 
-AS you can see, we only used the `invoke` method. It has a special syntax that we are going to detail: `$this->invoke(<object instance>)-><method name>(<arguments>)`
+As you can see, we only used the `invoke` method. It has a special syntax that we are going to detail: `$this->invoke(<object instance>)-><method name>(<arguments>)`
 
 * `<object instance>` is a reference to an object instance. In the previous example it was `$foo`, a reference to a `\foo` instance;
 * `<method name>` is the name of the method we want to make visible and call. In the previous example it was `bar`or `baz`.;
@@ -150,7 +150,7 @@ namespace tests\units
 }
 ```
 
-The mock generatornow provides a `makeVisible` method which you can call to override a method visibility. You have to call 
+The mock generator now provides a `makeVisible` method which you can call to override a method visibility. You have to call
 this method **before** the generation of the mocked class which happens the first time a mock is instanciated or when you call
 the `generate` method of the mock controller.
 
@@ -165,7 +165,7 @@ Now let's talk about the limitations:
 * Once the visibility has been overridden, **it can't be reverted**;
 * Overriding the visibility of method in mocks has to be done carefully: **this is not a temporary operation involving reflection**.
 
-When you want to temporarily override the visibility of a mock instance, you can change the name of the mocked class using the `generate`method's
+When you want to temporarily override the visibility of a mock class method, you can change the name of the mocked class using the `generate` method's
 arguments. Using the previous example, it would look like:
 
 ```php
