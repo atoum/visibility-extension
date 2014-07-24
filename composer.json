@@ -11,14 +11,8 @@
             "email": "contact@jubianchi.fr"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jubianchi/atoum"
-        }
-    ],
     "require-dev": {
-        "atoum/atoum": "dev-experimentation"
+        "atoum/atoum": "dev-edge"
     },
     "autoload": {
         "psr-4": {

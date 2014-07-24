@@ -32,7 +32,7 @@ class invokable
         }
         else
         {
-            $return = $this->method->invoke($this->target, null);
+            $return = $this->method->invoke($this->target);
         }
 
         $this->strenghtenVisibility();

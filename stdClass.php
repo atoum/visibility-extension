@@ -40,7 +40,7 @@ namespace tests\units
 					->object($this->invoke($sut)->bar())->isIdenticalTo($sut)
 					->array($this->invoke($sut)->bar($a = uniqid(), $b = uniqid()))->isIdenticalTo(array($a, $b))
 
-                    ->string($this->invoke('bar')->foo())->isEqualTo('bar::foo')
+                    //->string($this->invoke('bar')->foo())->isEqualTo('bar::foo')
 
 				->given(
 					$this->mockGenerator
