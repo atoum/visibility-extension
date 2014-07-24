@@ -1,4 +1,4 @@
-# atoum/visibility-extension
+# atoum/visibility-extension [![Build Status](https://travis-ci.org/jubianchi/atoum-visibility-extension.svg?branch=master)](https://travis-ci.org/jubianchi/atoum-visibility-extension)
 
 ![atoum](http://downloads.atoum.org/images/logo.png)
 
