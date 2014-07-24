@@ -51,6 +51,8 @@ namespace tests\units
 				->and($this->calling($mockedSut)->bar = 'foo')
 				->then
 					->string($mockedSut->baz())->isEqualTo('foo')
+                    ->mock($mockedSut)
+                        ->call('bar')->once()
 			;
 		}
 	}
