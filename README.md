@@ -37,7 +37,7 @@ to test protected method with it.
 
 You can achieve visibility override using two methods:
 
-* Override concrete classes' methods visibility: this will allow you to assert on protected/private methods return values;
+* Override concrete classes' methods visibility: this will allow you to assert on protected/private methods returned values,
 * Override mocked classes' methods visibility: this will allow you to override protected/private methods code and assert on their calls.
 
 ### Override concrete classes' methods visibility
@@ -154,15 +154,15 @@ The mock generator now provides a `makeVisible` method which you can call to ove
 this method **before** the generation of the mocked class which happens the first time a mock is instanciated or when you call
 the `generate` method of the mock controller.
 
-Doing this will create a child class (the mock) and define the protected/private methods as public. YOu will then be able to call
+Doing this will create a child class (the mock) and define the protected/private methods as public. You will then be able to call
 them directly, without even using the `invoke` method we saw in the previous section.
 
-You will also be able to assert on those methods' calls using standard atoum assertion.
+You will also be able to assert on those methods' calls using standard atoum assertions.
 
 Now let's talk about the limitations:
 
-* The first one is that the visibility override has to be declared **before the first generation of the mocked class**¨
-* Once the visibility has been overridden, **it can't be reverted**;
+* The first one is that the visibility override has to be declared **before the first generation of the mocked class**,
+* Once the visibility has been overridden, **it can't be reverted**,
 * Overriding the visibility of method in mocks has to be done carefully: **this is not a temporary operation involving reflection**.
 
 When you want to temporarily override the visibility of a mock class method, you can change the name of the mocked class using the `generate` method's
@@ -183,7 +183,7 @@ namespace tests\units
 				->given(
 					$this->mockGenerator
 						->makeVisible('bar')
-						->generate('foo', 'mock', mockedFoo')
+						->generate('foo', 'mock', 'mockedFoo')
 				)
 				->if($mockedSut = new \mock\mockedFoo)
 				->and($this->calling($mockedSut)->bar = 'foo')
@@ -201,6 +201,6 @@ namespace tests\units
 Doing this, we would generate a `\mock\mockedFoo` class from the `\foo` class with a looser visiblity on the `bar` method.
 This will allow us to bypass some limitation:
 
-* This will generate a new mock class so the visibility override will always apply, even if the `\foo` class was already mocked;
-* We can "revert" this operation by treating this mock class as a one-shot mock and forget it right after the test. This will still 
+* This will generate a new mock class so the visibility override will always apply, even if the `\foo` class was already mocked,
+* We can "revert" this operation by treating this mock class as a one-shot mock and forget it right after the test. This will still
 require that we don't reuse the same name for future mocks.
