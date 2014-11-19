@@ -190,8 +190,8 @@ namespace tests\units
 				->then
 					->string($mockedSut->baz())->isEqualTo('foo')
 					->string($mockedSut->baz())->isEqualTo('foo')
-                    ->mock($mockedSut)
-                        ->call('bar')->twice()
+					->mock($mockedSut)
+						->call('bar')->twice()
 			;
 		}
 	}
