@@ -38,20 +38,20 @@ class extension implements atoum\extension
 				'invoke',
 				function($target) use ($test) {
 					if (is_string($target))
-                    {
-                        $invoker = new atoum\visibility\invokers\klass();
-                    }
-                    else
-                    {
-                        $invoker = new atoum\visibility\invokers\instance();
-                    }
+					{
+						$invoker = new invokers\klass();
+					}
+					else
+					{
+						$invoker = new invokers\instance();
+					}
 
-                    return $invoker->setTarget($target);
+					return $invoker->setTarget($target);
 				}
 			)
 		;
 
-		$test->setMockGenerator(new atoum\visibility\mock\generator($test));
+		$test->setMockGenerator(new mock\generator($test));
 
 		return $this;
 	}
