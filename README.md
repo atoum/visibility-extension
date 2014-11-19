@@ -183,7 +183,7 @@ namespace tests\units
 				->given(
 					$this->mockGenerator
 						->makeVisible('bar')
-						->generate('foo', 'mock', mockedFoo')
+						->generate('foo', 'mock', 'mockedFoo')
 				)
 				->if($mockedSut = new \mock\mockedFoo)
 				->and($this->calling($mockedSut)->bar = 'foo')
