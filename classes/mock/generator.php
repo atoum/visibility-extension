@@ -2,10 +2,9 @@
 
 namespace mageekguy\atoum\visibility\mock;
 
+use mageekguy\atoum\test;
 
-use mageekguy\atoum\mock\php;
-
-class generator extends \mageekguy\atoum\test\mock\generator
+class generator extends test\mock\generator
 {
 	protected $loosenedMethods = array();
 

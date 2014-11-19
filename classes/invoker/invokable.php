@@ -2,7 +2,6 @@
 
 namespace mageekguy\atoum\visibility\invoker;
 
-
 class invokable
 {
     protected $method;
