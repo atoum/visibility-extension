@@ -1,4 +1,4 @@
-# atoum/visibility-extension [![Build Status](https://travis-ci.org/jubianchi/atoum-visibility-extension.svg?branch=master)](https://travis-ci.org/jubianchi/atoum-visibility-extension)
+# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
 
 ![atoum](http://downloads.atoum.org/images/logo.png)
 
@@ -9,8 +9,7 @@ Install extension using [composer](https://getcomposer.org):
 ```json
 {
     "require-dev": {
-        "atoum/atoum": "dev-edge",
-        "atoum/visibility-extension": "dev-master"
+        "atoum/visibility-extension": "~1.0"
     },
 }
 
