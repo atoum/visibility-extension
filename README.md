@@ -26,7 +26,9 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'a
 
 use mageekguy\atoum\visibility;
 
-$runner->addExtension(new visibility\extension($script));
+$extension = new visibility\extension($script);
+
+$extension->addToRunner($runner);
 ```
 
 ## Use it
