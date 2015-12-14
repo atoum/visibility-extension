@@ -9,45 +9,45 @@ use
 
 class instance extends atoum\test
 {
-    public function testClass()
-    {
-        $this->testedClass->isSubClassOf('mageekguy\atoum\visibility\invoker');
-    }
+	public function testClass()
+	{
+		$this->testedClass->isSubClassOf('mageekguy\atoum\visibility\invoker');
+	}
 
-    public function test__construct()
-    {
-        $this
-            ->if($invoker = new testedClass())
-            ->then
-                ->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
-            ->if($invoker = new testedClass($factory = function() {}))
-            ->then
-                ->object($invoker->getReflectionClassFactory())->isIdenticalTo($factory)
-        ;
-    }
+	public function test__construct()
+	{
+		$this
+			->if($invoker = new testedClass())
+			->then
+				->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
+			->if($invoker = new testedClass($factory = function() {}))
+			->then
+				->object($invoker->getReflectionClassFactory())->isIdenticalTo($factory)
+		;
+	}
 
-    public function testGetSetReflectionClassFactory()
-    {
-        $this
-            ->if($invoker = new testedClass())
-            ->then
-                ->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
-                ->object($invoker->setReflectionClassFactory())->isIdenticalTo($invoker)
-                ->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
-            ->if($factory = function() {})
-            ->then
-                ->object($invoker->setReflectionClassFactory($factory))->isIdenticalTo($invoker)
-                ->object($invoker->getReflectionClassFactory())->isIdenticalTo($factory)
-            ->if($factory = uniqid())
-            ->then
-                ->exception(function() use ($invoker, $factory) {
-                        $invoker->setReflectionClassFactory($factory);
-                    }
-                )
-                    ->isInstanceOf('invalidArgumentException')
-                    ->hasMessage(sprintf('Argument of %s::setReflectionClassFactory() must be callable', get_class($invoker)))
-        ;
-    }
+	public function testGetSetReflectionClassFactory()
+	{
+		$this
+			->if($invoker = new testedClass())
+			->then
+				->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
+				->object($invoker->setReflectionClassFactory())->isIdenticalTo($invoker)
+				->object($invoker->getReflectionClassFactory())->isInstanceOf('closure')
+			->if($factory = function() {})
+			->then
+				->object($invoker->setReflectionClassFactory($factory))->isIdenticalTo($invoker)
+				->object($invoker->getReflectionClassFactory())->isIdenticalTo($factory)
+			->if($factory = uniqid())
+			->then
+				->exception(function() use ($invoker, $factory) {
+						$invoker->setReflectionClassFactory($factory);
+					}
+				)
+					->isInstanceOf('invalidArgumentException')
+					->hasMessage(sprintf('Argument of %s::setReflectionClassFactory() must be callable', get_class($invoker)))
+		;
+	}
 
 
 	public function testGetInvokable()
@@ -70,44 +70,44 @@ class instance extends atoum\test
 				)
 					->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
 					->hasMessage(sprintf('Method %s::%s() does not exist', get_class($object), $method))
-            ->given(
+			->given(
 				$this->mockGenerator->orphanize('__construct')->shuntParentClassCalls()->generate('reflectionMethod'),
 				$factory = function($object) use (& $reflectionClass, & $reflectionMethod) {
 					$reflectionClass = new \mock\reflectionClass($object);
-                    $reflectionMethod = new \mock\reflectionMethod();
+					$reflectionMethod = new \mock\reflectionMethod();
 
-                    $reflectionClass->getMockController()->hasMethod = true;
+					$reflectionClass->getMockController()->hasMethod = true;
 					$reflectionClass->getMockController()->getMethod = $reflectionMethod;
 
-                    $reflectionMethod->getMockController()->isStatic = true;
+					$reflectionMethod->getMockController()->isStatic = true;
 
 					return $reflectionClass;
 				}
 			)
 			->if($invoker->setReflectionClassFactory($factory))
-            ->and($invoker->setTarget($object = new \stdClass()))
-            ->then
-                ->exception(function() use ($invoker, $method) {
-                       $invoker->getInvokable($method);
-                    }
-                )
-                    ->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
-                    ->hasMessage(sprintf('Static methods are not supported by %s', get_class($invoker)))
+			->and($invoker->setTarget($object = new \stdClass()))
+			->then
+				->exception(function() use ($invoker, $method) {
+					   $invoker->getInvokable($method);
+					}
+				)
+					->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
+					->hasMessage(sprintf('Static methods are not supported by %s', get_class($invoker)))
 			->given(
 				$factory = function($object) use (& $reflectionClass, & $reflectionMethod, & $method) {
 					$reflectionClass = new \mock\reflectionClass($object);
-                    $reflectionMethod = new \mock\reflectionMethod();
+					$reflectionMethod = new \mock\reflectionMethod();
 
-                    $reflectionClass->getMockController()->hasMethod = true;
+					$reflectionClass->getMockController()->hasMethod = true;
 					$reflectionClass->getMockController()->getMethod = $reflectionMethod;
 
-                    $reflectionMethod->getMockController()->isStatic = false;
+					$reflectionMethod->getMockController()->isStatic = false;
 
 					return $reflectionClass;
 				}
 			)
 			->if($invoker->setReflectionClassFactory($factory))
-            ->and($invoker->setTarget($object = new \stdClass()))
+			->and($invoker->setTarget($object = new \stdClass()))
 			->then
 				->object($invoker->getInvokable($method))->isInstanceOf('mageekguy\atoum\visibility\invoker\invokable')
 		;
@@ -119,17 +119,17 @@ class instance extends atoum\test
 			->given(
 				$this->mockGenerator
 					->orphanize('__construct')
-                    ->orphanize('invoke')
+					->orphanize('invoke')
 					->generate('reflectionMethod'),
 				$factory = function($object) use (& $reflectionClass, & $reflectionMethod, & $method, & $return) {
 					$reflectionClass = new \mock\reflectionClass($object);
-                    $reflectionMethod = new \mock\reflectionMethod();
+					$reflectionMethod = new \mock\reflectionMethod();
 
 					$reflectionClass->getMockController()->hasMethod = true;
-                    $reflectionClass->getMockController()->getMethod = $reflectionMethod;
+					$reflectionClass->getMockController()->getMethod = $reflectionMethod;
 
-                    $reflectionMethod->getMockController()->isStatic = false;
-                    $reflectionMethod->getMockController()->isPublic = false;
+					$reflectionMethod->getMockController()->isStatic = false;
+					$reflectionMethod->getMockController()->isPublic = false;
 					$reflectionMethod->getMockController()->invoke = $return = uniqid();
 					$reflectionMethod->getMockController()->invokeArgs = $return;
 

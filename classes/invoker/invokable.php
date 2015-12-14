@@ -4,60 +4,60 @@ namespace mageekguy\atoum\visibility\invoker;
 
 class invokable
 {
-    protected $method;
-    protected $target;
-    protected $wasLoosened;
+	protected $method;
+	protected $target;
+	protected $wasLoosened;
 
-    public function __construct(\reflectionMethod $method, $target = null)
-    {
-        $this->method = $method;
-        $this->target = $target;
-    }
+	public function __construct(\reflectionMethod $method, $target = null)
+	{
+		$this->method = $method;
+		$this->target = $target;
+	}
 
-    public function __invoke($arguments)
-    {
-        return call_user_func_array(array($this, 'invoke'), $arguments);
-    }
+	public function __invoke($arguments)
+	{
+		return call_user_func_array(array($this, 'invoke'), $arguments);
+	}
 
-    public function invoke()
-    {
-        $arguments = array_slice(func_get_args(), 1);
+	public function invoke()
+	{
+		$arguments = array_slice(func_get_args(), 1);
 
-        $this->loosenVisibility();
+		$this->loosenVisibility();
 
-        if (sizeof($arguments) > 0)
-        {
-            $return = $this->method->invokeArgs($this->target, $arguments);
-        }
-        else
-        {
-            $return = $this->method->invoke($this->target);
-        }
+		if (sizeof($arguments) > 0)
+		{
+			$return = $this->method->invokeArgs($this->target, $arguments);
+		}
+		else
+		{
+			$return = $this->method->invoke($this->target);
+		}
 
-        $this->strenghtenVisibility();
+		$this->strenghtenVisibility();
 
-        return $return;
-    }
+		return $return;
+	}
 
-    protected function loosenVisibility()
-    {
-        if ($this->method->isPublic() === false)
-        {
-            $this->method->setAccessible(true);
-            $this->wasLoosened = true;
-        }
+	protected function loosenVisibility()
+	{
+		if ($this->method->isPublic() === false)
+		{
+			$this->method->setAccessible(true);
+			$this->wasLoosened = true;
+		}
 
-        return $this;
-    }
+		return $this;
+	}
 
-    protected function strenghtenVisibility()
-    {
-        if ($this->wasLoosened === true)
-        {
-            $this->method->setAccessible(false);
-            $this->wasLoosened = false;
-        }
+	protected function strenghtenVisibility()
+	{
+		if ($this->wasLoosened === true)
+		{
+			$this->method->setAccessible(false);
+			$this->wasLoosened = false;
+		}
 
-        return $this;
-    }
+		return $this;
+	}
 } 

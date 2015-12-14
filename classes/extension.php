@@ -2,10 +2,12 @@
 
 namespace mageekguy\atoum\visibility;
 
-use mageekguy\atoum;
-use mageekguy\atoum\observable;
-use mageekguy\atoum\runner;
-use mageekguy\atoum\test;
+use
+	mageekguy\atoum,
+	mageekguy\atoum\observable,
+	mageekguy\atoum\runner,
+	mageekguy\atoum\test
+;
 
 class extension implements atoum\extension
 {

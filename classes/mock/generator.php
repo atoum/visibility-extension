@@ -20,6 +20,11 @@ class generator extends test\mock\generator
 
 	public function methodIsMockable(\reflectionMethod $method)
 	{
+		if ($method->isFinal() || $method->isStatic() || static::methodNameIsReservedWord($method))
+		{
+			return false;
+		}
+
 		return $this->isLoosened($method->getName()) || parent::methodIsMockable($method);
 	}
 
