@@ -14,8 +14,7 @@ matrix:
     - php: hhvm-nightly
 
 before_script:
-  - wget https://getcomposer.org/composer.phar
-  - php composer.phar install --prefer-source
+  - composer install
 
 script:
   - vendor/bin/atoum --test-ext
