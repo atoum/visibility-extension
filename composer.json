@@ -11,8 +11,8 @@
             "email": "contact@jubianchi.fr"
         }
     ],
-    "require-dev": {
-        "atoum/atoum": "<3.0"
+    "require": {
+        "atoum/atoum": "^2.8"
     },
     "autoload": {
         "psr-4": {
