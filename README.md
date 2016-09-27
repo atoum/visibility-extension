@@ -9,26 +9,22 @@ Install extension using [composer](https://getcomposer.org):
 ```json
 {
     "require-dev": {
-        "atoum/visibility-extension": "~1.0"
+        "atoum/visibility-extension": "~2.0"
     },
 }
 
 ```
 
-Enable the extension using atoum configuration file:
+The extension will be automatically loaded. If you ever want to unload it, you can add this to your configuration file:
 
 ```php
 <?php
 
 // .atoum.php
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
 use mageekguy\atoum\visibility;
 
-$extension = new visibility\extension($script);
-
-$extension->addToRunner($runner);
+$runner->removeExtension(visibility\extension::class);
 ```
 
 ## Use it
