@@ -1,7 +1,7 @@
 # atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
 
 ![atoum](http://downloads.atoum.org/images/logo.png)
-![https://opensource.org/licenses/BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)
+![https://opensource.org/licenses/BSD-3-Clause](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)
 
 ## Install it
 
