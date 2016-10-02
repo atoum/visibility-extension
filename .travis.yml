@@ -5,16 +5,30 @@ php:
   - 5.4
   - 5.5
   - 5.6
-  - hhvm
-  - hhvm-nightly
+  - 7.0
+  - nightly
+
+env:
+  matrix:
+    - COMPOSER_PREFER="--prefer-stable"
+    - COMPOSER_PREFER="--prefer-lowest"
 
 matrix:
   allow_failures:
     - php: hhvm
-    - php: hhvm-nightly
+    - php: nightly
+  exclude:
+    - php: 7.0
+      env: COMPOSER_PREFER="--prefer-lowest"
+    - php: nightly
+      env: COMPOSER_PREFER="--prefer-lowest"
 
-before_script:
-  - composer install
+notifications:
+  irc: "irc.freenode.org##atoum"
+
+before_install:
+  - if [[ "$TRAVIS_PHP_VERSION" = "7.0" ]]; then args="-ncc"; fi;
 
 script:
-  - vendor/bin/atoum --test-ext
+  - composer update $COMPOSER_PREFER
+  - ./vendor/bin/atoum --test-ext
