@@ -14,6 +14,9 @@ env:
     - COMPOSER_PREFER="--prefer-lowest"
 
 matrix:
+  allow_failures:
+    - php: hhvm
+    - php: nightly
   exclude:
     - php: 7.0
       env: COMPOSER_PREFER="--prefer-lowest"
@@ -22,6 +25,9 @@ matrix:
 
 notifications:
   irc: "irc.freenode.org##atoum"
+
+before_install:
+  - if [[ "$TRAVIS_PHP_VERSION" = "7.0" ]]; then args="-ncc"; fi;
 
 script:
   - composer update $COMPOSER_PREFER
