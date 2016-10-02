@@ -1,4 +1,4 @@
-# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
+# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension) [![License: BSD 3-Clause](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ![atoum](http://atoum.org/images/logo/atoum.png)
 
