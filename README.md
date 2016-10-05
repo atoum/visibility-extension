@@ -1,4 +1,4 @@
-# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
+# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension) [![License: BSD 3-Clause](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ![atoum](http://atoum.org/images/logo/atoum.png)
 
@@ -205,3 +205,6 @@ This will allow us to bypass some limitation:
 * This will generate a new mock class so the visibility override will always apply, even if the `\foo` class was already mocked,
 * We can "revert" this operation by treating this mock class as a one-shot mock and forget it right after the test. This will still
 require that we don't reuse the same name for future mocks.
+
+## License
+visibility-extension is released under the BSD-3 Clause License. See the bundled LICENSE file for details.
