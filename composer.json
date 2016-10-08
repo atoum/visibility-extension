@@ -11,13 +11,17 @@
             "email": "contact@jubianchi.fr"
         }
     ],
-    "require-dev": {
-        "atoum/atoum": "^2.0"
+    "minimum-stability": "beta",
+    "require": {
+        "atoum/atoum": "^2.9"
     },
     "autoload": {
         "psr-4": {
             "mageekguy\\atoum\\visibility\\": "classes"
         },
-        "files": ["autoloader.php"]
+        "files": [
+            "autoloader.php",
+            "configuration.php"
+        ]
     }
 }

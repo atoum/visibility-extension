@@ -1,3 +1,7 @@
+# `dev-master`
+
+* [#12](https://github.com/atoum/visibility-extension/pull/12) The extension is now autoloaded ([@jubianchi])
+
 # 1.1.0 - 2016-09-27
 
 * [#7](https://github.com/atoum/visibility-extension/pull/7) Enable new injection method([@jubianchi])
