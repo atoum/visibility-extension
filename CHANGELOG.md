@@ -1,5 +1,6 @@
 # `dev-master`
 
+* [#13](https://github.com/atoum/visibility-extension/pull/13) Support return type hint ([@jubianchi])
 * [#12](https://github.com/atoum/visibility-extension/pull/12) The extension is now autoloaded ([@jubianchi])
 
 # 1.1.0 - 2016-09-27

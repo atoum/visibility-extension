@@ -20,7 +20,7 @@ class generator extends test\mock\generator
 
 	public function methodIsMockable(\reflectionMethod $method)
 	{
-		if ($method->isFinal() || $method->isStatic() || static::methodNameIsReservedWord($method))
+		if ($method->isFinal() || $method->isStatic() || $method->isPrivate() || static::methodNameIsReservedWord($method))
 		{
 			return false;
 		}
@@ -44,6 +44,6 @@ class generator extends test\mock\generator
 
 	protected function generateMethodSignature(\reflectionMethod $method)
 	{
-		return ($method->isPublic() === true || $this->isLoosened($method->getName()) ? 'public' : 'protected') . ' function' . ($method->returnsReference() === false ? '' : ' &') . ' ' . $method->getName() . '(' . $this->getParametersSignature($method) . ')';
+		return ($method->isPublic() === true || $this->isLoosened($method->getName()) ? 'public' : 'protected') . ' function' . ($method->returnsReference() === false ? '' : ' &') . ' ' . $method->getName() . '(' . $this->getParametersSignature($method) . ')' . $this->getReturnType($method);
 	}
 }
