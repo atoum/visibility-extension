@@ -54,9 +54,9 @@ namespace
 		}
 		
 		protected function baz($arg)
-        {
-            return $arg;
-        }
+		{
+			return $arg;
+		}
 	}
 }
 
@@ -76,14 +76,14 @@ namespace tests\units
 		}
 		
 		public function testBaz()
-        {
-            $this
-                ->if($sut = new \foo())
-                ->and($arg = uniqid())
-                ->then
-                    ->variable($this->invoke($sut)->baz($arg))->isEqualTo($arg)
-            ;
-        }
+		{
+			$this
+				->if($sut = new \foo())
+				->and($arg = uniqid())
+				->then
+					->variable($this->invoke($sut)->baz($arg))->isEqualTo($arg)
+			;
+		}
 	}
 }
 ```
@@ -139,8 +139,8 @@ namespace tests\units
 				->then
 					->string($mockedSut->baz())->isEqualTo('foo')
 					->string($mockedSut->baz())->isEqualTo('foo')
-                    ->mock($mockedSut)
-                        ->call('bar')->twice()
+					->mock($mockedSut)
+						->call('bar')->twice()
 			;
 		}
 	}
@@ -160,7 +160,7 @@ Now let's talk about the limitations:
 
 * The first one is that the visibility override has to be declared **before the first generation of the mocked class**,
 * Once the visibility has been overridden, **it can't be reverted**,
-* Overriding the visibility of method in mocks has to be done carefully: **this is not a temporary operation involving reflection**.
+* Overriding the visibility of method in mocks has to be done carefully: **it is a permanent operation involving reflection**.
 
 When you want to temporarily override the visibility of a mock class method, you can change the name of the mocked class using the `generate` method's
 arguments. Using the previous example, it would look like:
@@ -203,4 +203,5 @@ This will allow us to bypass some limitation:
 require that we don't reuse the same name for future mocks.
 
 ## License
+
 visibility-extension is released under the BSD-3 Clause License. See the bundled LICENSE file for details.
