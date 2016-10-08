@@ -5,16 +5,21 @@ php:
   - 5.4
   - 5.5
   - 5.6
-  - hhvm
-  - hhvm-nightly
+  - 7.0
+  - nightly
+
+env:
+  matrix:
+    - COMPOSER_PREFER="--prefer-stable"
+    - COMPOSER_PREFER="--prefer-lowest"
 
 matrix:
   allow_failures:
-    - php: hhvm
-    - php: hhvm-nightly
-
-before_script:
-  - composer install
+    - php: nightly
+  exclude:
+    - php: 7.0
+      env: COMPOSER_PREFER="--prefer-lowest"
 
 script:
+  - composer update $COMPOSER_PREFER
   - vendor/bin/atoum --test-ext
