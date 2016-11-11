@@ -2,7 +2,7 @@
     "name": "atoum/visibility-extension",
     "type": "library",
     "description": "atoum extension to loosen method visibility",
-    "keywords": ["TDD","atoum","test","unit testing","visibility","atoum-extension"],
+    "keywords": ["TDD", "atoum", "test", "unit testing", "visibility", "atoum-extension"],
     "homepage": "http://www.atoum.org",
     "license": "BSD-3-Clause",
     "authors": [
