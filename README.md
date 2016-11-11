@@ -9,7 +9,7 @@ Install extension using [composer](https://getcomposer.org):
 ```json
 {
     "require-dev": {
-        "atoum/visibility-extension": "~2.0"
+        "atoum/visibility-extension": "~1.1"
     },
 }
 
