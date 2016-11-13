@@ -7,6 +7,12 @@ php:
   - 5.6
   - 7.0
   - nightly
+  
+cache:
+  directories:
+    - vendor
+
+sudo: false
 
 env:
   matrix:
