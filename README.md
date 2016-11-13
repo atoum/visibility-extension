@@ -1,18 +1,50 @@
-# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension) [![License: BSD 3-Clause](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
 
-![atoum](http://atoum.org/images/logo/atoum.png)
+The atoum visibility-extension allows you to override method visibility in your unit tests. For example, you will be able
+to test protected method with it.
+
+## Example
+
+In the example, we test the protected method `bar` :
+
+```php
+<?php
+
+namespace
+{
+  class foo
+  {
+    protected function bar()
+    {
+      return 'foo';
+    }
+  }
+}
+
+namespace tests\units
+{
+  use mageekguy\atoum;
+
+  class foo extends atoum\test
+  {
+    public function testBar()
+    {
+      $this
+        ->if($sut = new \foo())
+        ->then
+          ->string($this->invoke($sut)->bar())->isEqualTo('foo')
+      ;
+    }
+  }
+}
+```
 
 ## Install it
 
 Install extension using [composer](https://getcomposer.org):
 
-```json
-{
-    "require-dev": {
-        "atoum/visibility-extension": "~2.0"
-    },
-}
-
+```
+composer require --dev atoum/visibility-extension
 ```
 
 The extension will be automatically loaded. If you ever want to unload it, you can add this to your configuration file:
@@ -28,9 +60,6 @@ $runner->removeExtension(visibility\extension::class);
 ```
 
 ## Use it
-
-The atoum visibility-extension allows you to override method visibility in your unit tests. For example, you will be able
-to test protected method with it.
 
 You can achieve visibility override using two methods:
 
@@ -202,6 +231,15 @@ This will allow us to bypass some limitation:
 * We can "revert" this operation by treating this mock class as a one-shot mock and forget it right after the test. This will still
 require that we don't reuse the same name for future mocks.
 
+## Links
+
+* [atoum](http://atoum.org)
+* [atoum's documentation](http://docs.atoum.org)
+
+
 ## License
 
 visibility-extension is released under the BSD-3 Clause License. See the bundled LICENSE file for details.
+
+
+![atoum](http://atoum.org/images/logo/atoum.png)
