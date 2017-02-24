@@ -13,7 +13,7 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "atoum/atoum": "^2.9"
+        "atoum/atoum": "^3.0"
     },
     "autoload": {
         "psr-4": {
