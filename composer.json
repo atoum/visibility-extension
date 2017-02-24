@@ -13,15 +13,12 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "atoum/atoum": "^2.9"
+        "atoum/atoum": "^2.9 | ^3.0"
     },
     "autoload": {
         "psr-4": {
             "mageekguy\\atoum\\visibility\\": "classes"
         },
-        "files": [
-            "autoloader.php",
-            "configuration.php"
-        ]
+        "files": ["configuration.php"]
     }
 }
