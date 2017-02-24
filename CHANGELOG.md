@@ -1,3 +1,7 @@
+# 1.3.0 - 2017-02-24
+
+* [#31](https://github.com/atoum/visibility-extension/pull/31) Support atoum 3.x ([@hywan], [@jubianchi])
+
 # 1.2.0 - 2017-02-16
 
 * [#13](https://github.com/atoum/visibility-extension/pull/13) Support return type hint ([@jubianchi])
@@ -14,3 +18,4 @@
 # 1.0.0 - 2014-12-01
 
 [@jubianchi]: https://github.com/jubianchi
+[@hywan]: https://github.com/hywan
