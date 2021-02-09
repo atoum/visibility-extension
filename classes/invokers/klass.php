@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\visibility\invokers;
+namespace atoum\atoum\visibility\invokers;
 
 use
-	mageekguy\atoum,
-	mageekguy\atoum\visibility
+	atoum\atoum,
+	atoum\atoum\visibility
 ;
 
 class klass extends visibility\invoker

@@ -1,11 +1,10 @@
-# atoum/visibility-extension [![Build Status](https://travis-ci.org/atoum/visibility-extension.svg?branch=master)](https://travis-ci.org/atoum/visibility-extension)
+# atoum/visibility-extension [![example workflow name](https://github.com/atoum/visibility-extension/workflows/Linux/badge.svg)](https://github.com/atoum/visibility-extension/actions)
 
-The atoum visibility-extension allows you to override method visibility in your unit tests. For example, you will be able
-to test protected method with it.
+The atoum visibility-extension allows you to override method visibility in your unit tests. For example, you will be able to test protected method with it.
 
 ## Example
 
-In the example, we test the protected method `bar` :
+In the example, we test the protected method `bar`:
 
 ```php
 <?php
@@ -23,7 +22,7 @@ namespace
 
 namespace tests\units
 {
-  use mageekguy\atoum;
+  use atoum\atoum;
 
   class foo extends atoum\test
   {
@@ -54,7 +53,7 @@ The extension will be automatically loaded. If you ever want to unload it, you c
 
 // .atoum.php
 
-use mageekguy\atoum\visibility;
+use atoum\atoum\visibility;
 
 $runner->removeExtension(visibility\extension::class);
 ```
@@ -91,7 +90,7 @@ namespace
 
 namespace tests\units
 {
-	use mageekguy\atoum;
+	use atoum\atoum;
 
 	class foo extends atoum\test
 	{
@@ -151,7 +150,7 @@ namespace
 
 namespace tests\units
 {
-	use mageekguy\atoum;
+	use atoum\atoum;
 
 	class foo extends atoum\test
 	{
@@ -199,7 +198,7 @@ arguments. Using the previous example, it would look like:
 
 namespace tests\units
 {
-	use mageekguy\atoum;
+	use atoum\atoum;
 
 	class foo extends atoum\test
 	{

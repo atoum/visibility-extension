@@ -1,12 +1,12 @@
 <?php
 
-namespace mageekguy\atoum\visibility;
+namespace atoum\atoum\visibility;
 
 use
-	mageekguy\atoum,
-	mageekguy\atoum\observable,
-	mageekguy\atoum\runner,
-	mageekguy\atoum\test
+	atoum\atoum,
+	atoum\atoum\observable,
+	atoum\atoum\runner,
+	atoum\atoum\test
 ;
 
 class extension implements atoum\extension

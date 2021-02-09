@@ -1,6 +1,6 @@
 <?php
 
-namespace mageekguy\atoum\visibility\invoker;
+namespace atoum\atoum\visibility\invoker;
 
 class invokable
 {

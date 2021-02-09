@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\visibility;
+namespace atoum\atoum\visibility;
 
 use 
-	mageekguy\atoum,
-	mageekguy\atoum\visibility\invoker
+	atoum\atoum,
+	atoum\atoum\visibility\invoker
 ;
 
 abstract class invoker

@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\visibility\tests\units;
+namespace atoum\atoum\visibility\tests\units;
 
 use
-	mageekguy\atoum,
-	\mock\mageekguy\atoum\visibility\invoker as testedClass
+	atoum\atoum,
+	\mock\atoum\atoum\visibility\invoker as testedClass
 ;
 
 class invoker extends atoum\test
