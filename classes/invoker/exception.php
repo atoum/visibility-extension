@@ -1,7 +1,7 @@
 <?php
 
-namespace mageekguy\atoum\visibility\invoker;
+namespace atoum\atoum\visibility\invoker;
 
-use mageekguy\atoum\exceptions\runtime;
+use atoum\atoum\exceptions\runtime;
 
 class exception extends runtime {}

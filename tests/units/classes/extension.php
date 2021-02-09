@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\visibility\tests\units;
+namespace atoum\atoum\visibility\tests\units;
 
 use
-	mageekguy\atoum,
-	mageekguy\atoum\visibility\extension as testedClass
+	atoum\atoum,
+	atoum\atoum\visibility\extension as testedClass
 ;
 
 class extension extends atoum\test
@@ -13,7 +13,7 @@ class extension extends atoum\test
 	{
 		$this
 			->testedClass
-				->hasInterface('mageekguy\atoum\extension')
+				->hasInterface('atoum\atoum\extension')
 		;
 	}
 
@@ -21,8 +21,8 @@ class extension extends atoum\test
 	{
 		$this
 			->if($script = new atoum\scripts\runner(uniqid()))
-			->and($script->setArgumentsParser($parser = new \mock\mageekguy\atoum\script\arguments\parser()))
-			->and($configurator = new \mock\mageekguy\atoum\configurator($script))
+			->and($script->setArgumentsParser($parser = new \mock\atoum\atoum\script\arguments\parser()))
+			->and($configurator = new \mock\atoum\atoum\configurator($script))
 			->then
 				->object($extension = new testedClass())
 			->if($this->resetMock($parser))
@@ -47,8 +47,8 @@ class extension extends atoum\test
 	{
 		$this
 			->if($extension = new testedClass())
-			->and($test = new \mock\mageekguy\atoum\test())
-			->and($manager = new \mock\mageekguy\atoum\test\assertion\manager())
+			->and($test = new \mock\atoum\atoum\test())
+			->and($manager = new \mock\atoum\atoum\test\assertion\manager())
 			->and($test->setAssertionManager($manager))
 			->then
 				->object($extension->setTest($test))->isIdenticalTo($extension)

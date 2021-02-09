@@ -1,8 +1,8 @@
 <?php
 
-namespace mageekguy\atoum\visibility\mock;
+namespace atoum\atoum\visibility\mock;
 
-use mageekguy\atoum\test;
+use atoum\atoum\test;
 
 class generator extends test\mock\generator
 {

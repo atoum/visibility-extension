@@ -1,3 +1,7 @@
+# 2.0.0 - 2020-02-09
+
+* [#32](https://github.com/atoum/visibility-extension/pull/32) Support atoum 4.x ([@Grummfy])
+
 # 1.3.0 - 2017-02-24
 
 * [#31](https://github.com/atoum/visibility-extension/pull/31) Support atoum 3.x ([@hywan], [@jubianchi])
@@ -19,3 +23,4 @@
 
 [@jubianchi]: https://github.com/jubianchi
 [@hywan]: https://github.com/hywan
+[@Grummfy]: https://github.com/Grummfy

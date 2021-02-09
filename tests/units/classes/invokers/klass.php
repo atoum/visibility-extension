@@ -1,17 +1,17 @@
 <?php
 
-namespace mageekguy\atoum\visibility\tests\units\invokers;
+namespace atoum\atoum\visibility\tests\units\invokers;
 
 use
-	mageekguy\atoum,
-	mageekguy\atoum\visibility\invokers\klass as testedClass
+	atoum\atoum,
+	atoum\atoum\visibility\invokers\klass as testedClass
 ;
 
 class klass extends atoum\test
 {
 	public function testClass()
 	{
-		$this->testedClass->isSubClassOf('mageekguy\atoum\visibility\invoker');
+		$this->testedClass->isSubClassOf('atoum\atoum\visibility\invoker');
 	}
 
 	public function test__construct()
@@ -60,7 +60,7 @@ class klass extends atoum\test
 						$invoker->getInvokable($method);
 					}
 				)
-					->isInstanceOf('mageekguy\atoum\visibility\invoker\exception')
+					->isInstanceOf('atoum\atoum\visibility\invoker\exception')
 					->hasMessage('Invoker\'s target is not set')
 			->if($invoker->setTarget($object = new \stdClass()))
 			->then
@@ -68,7 +68,7 @@ class klass extends atoum\test
 						$invoker->getInvokable($method);
 					}
 				)
-					->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
+					->isInstanceOf('atoum\atoum\exceptions\logic\invalidArgument')
 					->hasMessage(sprintf('Method %s::%s() does not exist', get_class($object), $method))
 			->given(
 				$this->mockGenerator->orphanize('__construct')->shuntParentClassCalls()->generate('reflectionMethod'),
@@ -91,7 +91,7 @@ class klass extends atoum\test
 					   $invoker->getInvokable($method);
 					}
 				)
-					->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
+					->isInstanceOf('atoum\atoum\exceptions\logic\invalidArgument')
 					->hasMessage(sprintf('Static methods are not supported by %s', get_class($invoker)))
 			->given(
 				$factory = function($object) use (& $reflectionClass, & $reflectionMethod, & $method) {
@@ -109,7 +109,7 @@ class klass extends atoum\test
 			->if($invoker->setReflectionClassFactory($factory))
 			->and($invoker->setTarget($object = new \stdClass()))
 			->then
-				->object($invoker->getInvokable($method))->isInstanceOf('mageekguy\atoum\visibility\invoker\invokable')
+				->object($invoker->getInvokable($method))->isInstanceOf('atoum\atoum\visibility\invoker\invokable')
 		;
 	}
 
@@ -142,7 +142,7 @@ class klass extends atoum\test
 						$invoker->getInvokable($method);
 					}
 				)
-					->isInstanceOf('mageekguy\atoum\visibility\invoker\exception')
+					->isInstanceOf('atoum\atoum\visibility\invoker\exception')
 					->hasMessage('Invoker\'s target is not set')
 			->and($invoker->setTarget($object = new \stdClass()))
 			->and($method = uniqid())
